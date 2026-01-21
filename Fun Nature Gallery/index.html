@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun Nature Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Fun Nature Gallery</h1>
+    <p>Explore beautiful free nature photos while learning CSS Grid!</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Landscapes</a>
+    <a href="#">Forests</a>
+    <a href="#">Mountains</a>
+    <a href="#">Water</a>
+</nav>
+
+<main>
+
+    <aside>
+        <h3>Filter Nature</h3>
+        <p>Try selecting:</p>
+
+        <ul>
+            <li><input type="checkbox"> Forest</li>
+            <li><input type="checkbox"> Mountains</li>
+            <li><input type="checkbox"> Water</li>
+        </ul>
+
+        <p><b>Why this is perfect for Grid class:</b></p>
+        <ul>
+            <li><strong>main</strong> is already a 2-column grid (sidebar + gallery)</li>
+            <li><strong>.gallery</strong> is a sponsive grid of cards, perfect for practicing: </li>
+                <ul>    
+                    <li>grid-template-columns</li> 
+                    <li>rid-gap / gap</li>
+                    <li>justify-items / align-items</li>
+                </ul>
+            <li>Hover effects make it interactive and fun.</li>
+            <li>Students can add their favourite nature images and experiment.</li>
+            <li>Sidebar filters give a "real gallery feel".</li>
+        </ul>
+    </aside>
+
+    <section class="gallery">
+
+        <div class="card">
+            <img src="https://img.freepik.com/free-photo/minimalist-photorealistic-road_23-2150953041.jpg?t=st=1769007013~exp=1769010613~hmac=557c66db4d1b7d91502c089fd23816806ae01f6bf2f10c35d60321b622052c3c">
+            <p>Forest Path</p>
+        </div>
+
+        <div class="card">
+            <img src="https://img.freepik.com/free-photo/beautiful-lake-ritsa-caucasus-mountains-green-mountain-hills-blue-sky-with-clouds-spring-landscape_1217-1717.jpg?t=st=1769007189~exp=1769010789~hmac=d27afc0d4b725ddc982e9781465b49a6f863dc9777e9599779e43a61ba845722">
+            <p>Mountain Lake</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.stockcake.com/public/a/2/3/a23112e5-aae8-40e0-b808-d863d15b6a51_large/sunset-highway-drive-stockcake.jpg">
+            <p>Sunset Road</p>
+        </div>
+
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/3e/c1/d3/3ec1d38a61abb2028ea1e7c07961576e.jpg">
+            <p>Waterfall View</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.pexels.com/photos/17744641/pexels-photo-17744641/free-photo-of-view-of-a-bright-green-forest.jpeg">
+            <p>Green Forest</p>
+        </div>
+
+        <div class="card">
+            <img src="https://wallpapers.com/images/hd/iphone-7-beach-shore-sunset-ter5uupdfaoqnqa5.jpg">
+            <p>Sunset Beach</p>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+© 2026 Nature Gallery — CSS Grid Practice!
+</footer>
+
+</body>
+</html>
