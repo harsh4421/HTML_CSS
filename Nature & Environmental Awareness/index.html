@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature & Environmental Awareness</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            color: #fff;
+            background: url('https://cdn.pixabay.com/photo/2014/04/17/23/26/environmental-protection-326923_1280.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        aside {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scroll-behavior: smooth;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255, 0, 150, 0.3), rgba(0, 200, 255, 0.3));
+            opacity: 0.4;
+            transition: opacity 0.5s;
+        }
+
+        .card:hover::after {
+            opacity: 0.7;
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .card p {
+            padding: 10px;
+            font-weight: bold;
+            text-shadow: 1px1px2px rgba(0, 0, 0, 0.6);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Animated gradient background overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 0, 150, 0.2), rgba(0, 200, 255, 0.2));
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Nature & Environmental Awareness</h1>
+        <p>Protecting our planet, for future generations!</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Forests</a>
+        <a href="#">Wildlife</a>
+        <a href="#">Ocean</a>
+        <a href="#">Climate</a>
+        <a href="#">Water</a>
+    </nav>
+
+    <main>
+        <aside>
+            <h3>Key Issues</h3>
+            <br>
+            <ul style="list-style: none;">
+                <li><input type="checkbox"> Global Warming</li>
+                <li><input type="checkbox"> Plastic Pollution</li>
+                <li><input type="checkbox"> Deforestation</li>
+                <li><input type="checkbox"> Endangered Species</li>
+            </ul>
+            <br>
+            <hr>
+            <br>
+            <h4>Take Action:</h4>
+            <ul style="padding-left: 20px;">
+                <li>Reduce single-use plastic.</li>
+                <li>Support sustainable brands.</li>
+                <li>Plant trees in your area.</li>
+                <li>Conserve water daily.</li>
+            </ul>
+        </aside>
+        <section class="gallery">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg" alt="Forest Conservation">
+                <p>Forests - Earth's lungs need protection</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg" alt="Ocean Pollution">
+                <p>Oceans - Stop plastic pollution now</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/792381/pexels-photo-792381.jpeg" alt="Wildlife Protection">
+                <p>Wildlife - Protect endangered species</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/221012/pexels-photo-221012.jpeg" alt="Climate Change">
+                <p>Climate - Reduce carbon footprint daily</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1002703/pexels-photo-1002703.jpeg" alt="Water Conservation">
+                <p>Water - Conserve every precious drop</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/2559941/pexels-photo-2559941.jpeg" alt="Renewable Energy">
+                <p>Energy - Switch to renewable sources</p>
+            </div>
+        </section>
+<section class="gallery">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/2561628/pexels-photo-2561628.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Industrial Pollution">
+                <p>Air Quality - Stop industrial emissions</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/60013/desert-drought-dehydrated-clay-soil-60013.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Drought">
+                <p>Drought - The reality of warming</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/2409022/pexels-photo-2409022.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Plastic Waste">
+                <p>Waste - Ends up in our food chain</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1267325/pexels-photo-1267325.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Deforestation">
+                <p>Habitat Loss - Forests are vanishing</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/221385/pexels-photo-221385.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Oil Spill">
+                <p>Pollution - Keeping oceans clean</p>
+            </div>
+            <div class="card">
+                <img src="https://www.theanimalreader.com/wp-content/uploads/2023/11/polar.jpg" alt="Melting Ice">
+                <p>Polar Crisis - Ice is melting fast</p>
+            </div>
+        </section>
+        <aside>
+                <section class="gallery">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Solar Panels">
+                <p>Green Tech - Powering the future</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cycling">
+                <p>Eco Travel - Zero emission commute</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Planting Trees">
+                <p>Reforestation - Plant a future</p>
+            </div>
+            <div class="card">
+                <img src="https://leafieldrecycle.com/wp-content/uploads/2018/07/Recycling-Loop-v2.jpg" alt="Recycling">
+                <p>Recycling - Closing the loop</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/460961/pexels-photo-460961.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Save Bees">
+                <p>Pollinators - Essential for life</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Community">
+                <p>Act Now - Join the movement</p>
+            </div>
+            <div class="card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZEXdW7g2BO2NKhvbN3VvqGshyHy97S1XyxOYSPoyIxOHr6VhVPF8dGsAD1KGXNmGi2SBVS8FCN1RAXddJi2_7PMsQH07NRp5UrR5vknqfqSdwBhkA00fV10AVdFzlYLdAgT49TMWW_DA/s1600/limpiyo+1.jpg" alt="Cleanup Drive">
+                <p>Join Cleanup Drives</p>
+            </div>
+            <div class="card">
+                <img src="https://www.green.earth/hs-fs/hubfs/The%20top%2010%20green%20cities%20in%20the%20world-1.jpg?width=1392&height=1042&name=The%20top%2010%20green%20cities%20in%20the%20world-1.jpg" alt="Green Cities">
+                <p>Support Green Cities</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/4199126/pexels-photo-4199126.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Zero Waste">
+                <p>Go Zero Waste</p>
+            </div>
+            <div class="card">
+                <img src="https://www.kevinandkaia.com/uploads/1/2/6/1/126191832/s922489433528641189_p343_i39_w1000.png?width=640" alt="Cycling">
+                <p>Cycle More, Drive Less</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/709552/pexels-photo-709552.jpeg?auto=compress&cs=tinysrgb&w=600" alt="River Protection">
+                <p>Protect Our Rivers</p>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/459728/pexels-photo-459728.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Future Generations">
+                <p>Teach the Next Gen</p>
+        </section>
+            </aside>
+    
+    </main>
+
+    <footer>
+        <p>© 2026 Nature & Environmental Awareness – CSS Grid Practice!</p>
+    </footer>
+
+</body>
+
+</html>
