@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+.sidebar {
+    background-color: #0f172a;
+    flex: 1 0 250px; 
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    padding: 20px 25px;
+    letter-spacing: 0.5px;
+    color: #f8fafc;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.menu-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.menu-link:hover {
+    background-color: #1e293b;
+    color: white;
+}
+
+.main-content {
+    flex: 999 1 600px;  
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f5f9;
+}
+
+.top-bar {
+    background-color: #1e293b;
+    padding: 15px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #334155;
+}
+
+.search-container {
+    flex: 1 1 300px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+}
+
+.user-profile {
+    color: white;
+    font-weight: 500;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.dashboard-view {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 250px; 
+    padding: 25px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    text-align: center;
+    min-height: 100px;
+}
+
+.card-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.card-value {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.white-card {
+    background-color: white;
+    color: #000;
+}
+
+.blue-card {
+    background-color: #2563eb; 
+    color: white;
+}
