@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS3 MCQ Question Bank — ITM Skills University</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #f5f0e8;
+    --accent: #c8401a;
+    --gold: #d4a843;
+    --sage: #4a7c59;
+    --mid: #6b6560;
+    --border: #d8cfc4;
+    --card-bg: #fdfaf5;
+    --correct: #2d6a4f;
+    --wrong: #a4262c;
+    --opt-hover: #ede8e0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0;
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 3px solid var(--gold);
+  }
+  .masthead-inner {
+    max-width: 1100px; margin: auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 24px;
+    gap: 16px;
+  }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; letter-spacing: .04em; }
+  .masthead-title span { color: var(--gold); }
+  .score-pill {
+    background: var(--gold); color: var(--ink);
+    padding: 6px 18px; border-radius: 20px;
+    font-family: 'DM Mono', monospace; font-size: .85rem; font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 56px 24px 48px;
+    text-align: center;
+    border-bottom: 4px double var(--gold);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: 'CSS'; position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 22rem; font-weight: 900;
+    color: rgba(255,255,255,.03);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    pointer-events: none; user-select: none; line-height: 1;
+  }
+  .hero-kicker {
+    font-family: 'DM Mono', monospace; font-size: .75rem;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900; line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero-sub {
+    font-size: 1rem; color: rgba(245,240,232,.65);
+    max-width: 560px; margin: 0 auto 28px;
+  }
+  .hero-stats {
+    display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 700; color: var(--gold); display: block;
+  }
+  .stat-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(245,240,232,.5); }
+
+  /* ── CONTROLS ── */
+  .controls-bar {
+    max-width: 1100px; margin: 0 auto;
+    padding: 18px 24px;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .ctrl-btn {
+    padding: 8px 20px; border: 2px solid var(--ink);
+    background: transparent; color: var(--ink);
+    font-family: 'DM Mono', monospace; font-size: .78rem;
+    font-weight: 500; cursor: pointer; border-radius: 4px;
+    transition: all .2s;
+    text-transform: uppercase; letter-spacing: .05em;
+  }
+  .ctrl-btn:hover, .ctrl-btn.active {
+    background: var(--ink); color: var(--paper);
+  }
+  .ctrl-btn.danger { border-color: var(--accent); color: var(--accent); }
+  .ctrl-btn.danger:hover { background: var(--accent); color: #fff; }
+  .filter-label {
+    font-family: 'DM Mono', monospace; font-size: .78rem;
+    color: var(--mid); text-transform: uppercase; letter-spacing: .07em;
+  }
+  .search-box {
+    padding: 8px 14px; border: 2px solid var(--border);
+    background: #fff; border-radius: 4px;
+    font-family: 'Lato', sans-serif; font-size: .88rem;
+    color: var(--ink); outline: none; min-width: 220px;
+    transition: border-color .2s;
+  }
+  .search-box:focus { border-color: var(--accent); }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {
+    max-width: 1100px; margin: 0 auto; padding: 0 24px 8px;
+  }
+  .progress-track {
+    height: 4px; background: var(--border); border-radius: 2px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: var(--gold);
+    border-radius: 2px; transition: width .4s ease;
+    width: 0%;
+  }
+  .progress-text {
+    font-family: 'DM Mono', monospace; font-size: .72rem;
+    color: var(--mid); margin-top: 4px;
+    display: flex; justify-content: space-between;
+  }
+
+  /* ── TOPIC NAVIGATION ── */
+  .topic-nav {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 24px 20px;
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .topic-chip {
+    padding: 5px 14px; border-radius: 20px;
+    border: 1.5px solid var(--border);
+    font-size: .75rem; font-family: 'DM Mono', monospace;
+    cursor: pointer; transition: all .2s;
+    background: #fff; color: var(--mid);
+  }
+  .topic-chip:hover, .topic-chip.active {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    max-width: 1100px; margin: 32px auto 0;
+    padding: 0 24px;
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--ink);
+  }
+  .section-line {
+    flex: 1; height: 1px; background: var(--border);
+  }
+  .section-count {
+    font-family: 'DM Mono', monospace; font-size: .75rem;
+    color: var(--mid);
+  }
+
+  /* ── QUESTIONS GRID ── */
+  .questions-container {
+    max-width: 1100px; margin: 0 auto;
+    padding: 16px 24px 40px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+
+  /* ── QUESTION CARD ── */
+  .q-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: box-shadow .2s, border-color .2s;
+    animation: fadeUp .3s ease both;
+  }
+  .q-card:hover { box-shadow: 0 4px 20px rgba(26,26,46,.1); }
+  .q-card.answered-correct { border-color: var(--correct); }
+  .q-card.answered-wrong { border-color: var(--wrong); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-header {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .q-number {
+    font-family: 'DM Mono', monospace; font-size: .72rem;
+    color: #fff; background: var(--ink);
+    padding: 3px 9px; border-radius: 3px;
+    white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+  }
+  .q-topic-tag {
+    font-family: 'DM Mono', monospace; font-size: .68rem;
+    color: var(--accent); border: 1px solid var(--accent);
+    padding: 2px 8px; border-radius: 3px;
+    white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    text-transform: uppercase; letter-spacing: .05em;
+  }
+  .q-text {
+    font-size: .97rem; font-weight: 400; line-height: 1.5;
+    flex: 1; padding-top: 1px;
+  }
+  .q-text code {
+    font-family: 'DM Mono', monospace; font-size: .85em;
+    background: rgba(26,26,46,.06); padding: 1px 5px;
+    border-radius: 3px; color: var(--accent);
+  }
+
+  .q-options {
+    padding: 14px 20px 18px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .q-option {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 14px; border-radius: 5px;
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    transition: all .18s;
+    background: #fff;
+    font-size: .88rem; line-height: 1.45;
+  }
+  .q-option:hover { background: var(--opt-hover); border-color: #c0b8af; }
+  .q-option.selected-correct {
+    background: #d8f3dc; border-color: var(--correct); color: var(--correct);
+  }
+  .q-option.selected-wrong {
+    background: #fde8e8; border-color: var(--wrong); color: var(--wrong);
+  }
+  .q-option.reveal-correct {
+    background: #d8f3dc; border-color: var(--correct); color: var(--correct);
+  }
+  .q-option.disabled { cursor: default; }
+  .opt-letter {
+    font-family: 'DM Mono', monospace; font-size: .78rem;
+    font-weight: 500; flex-shrink: 0; margin-top: 1px;
+    width: 18px;
+  }
+  .opt-text code {
+    font-family: 'DM Mono', monospace; font-size: .83em;
+    background: rgba(26,26,46,.06); padding: 1px 4px;
+    border-radius: 2px;
+  }
+
+  .q-feedback {
+    display: none; padding: 10px 20px 14px;
+    font-size: .82rem; border-top: 1px solid var(--border);
+  }
+  .q-feedback.show { display: flex; align-items: flex-start; gap: 8px; }
+  .q-feedback.correct-fb { background: #f0faf3; color: var(--correct); }
+  .q-feedback.wrong-fb { background: #fdf0f0; color: var(--wrong); }
+  .fb-icon { flex-shrink: 0; font-size: 1rem; }
+  .fb-text code {
+    font-family: 'DM Mono', monospace; font-size: .82em;
+    background: rgba(0,0,0,.07); padding: 1px 4px; border-radius: 2px;
+  }
+
+  /* ── RESULTS PANEL ── */
+  .results-panel {
+    display: none;
+    max-width: 700px; margin: 32px auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .results-panel.show { display: block; }
+  .results-card {
+    background: var(--card-bg); border: 2px solid var(--gold);
+    border-radius: 8px; padding: 40px 32px;
+  }
+  .results-icon { font-size: 3.5rem; margin-bottom: 12px; }
+  .results-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; margin-bottom: 8px;
+  }
+  .results-score {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; font-weight: 900; color: var(--gold);
+    line-height: 1;
+  }
+  .results-sub { color: var(--mid); font-size: .9rem; margin: 8px 0 24px; }
+  .results-breakdown {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px; margin-bottom: 24px;
+  }
+  .rb-item { text-align: center; }
+  .rb-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; }
+  .rb-num.c { color: var(--correct); }
+  .rb-num.w { color: var(--wrong); }
+  .rb-num.u { color: var(--gold); }
+  .rb-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; color: var(--mid); }
+
+  /* ── HIDDEN CLASS ── */
+  .hidden { display: none !important; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .q-options { grid-template-columns: 1fr; }
+    .hero::before { font-size: 10rem; }
+    .results-breakdown { grid-template-columns: 1fr; gap: 10px; }
+    .masthead-inner { padding: 10px 16px; }
+    .hero h1 { font-size: 2rem; }
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .masthead, .hero, .controls-bar, .topic-nav, .progress-wrap { display: none; }
+    .q-card { break-inside: avoid; border: 1px solid #ccc; margin-bottom: 12px; }
+    .q-option { border: 1px solid #ccc; }
+  }
+
+  /* ── UTILITY ── */
+  .separator { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .sep-line { border: none; border-top: 2px dashed var(--border); margin: 8px 0; }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-title">CSS3 <span>Question Bank</span> — ITM Skills University</div>
+    <div class="score-pill" id="livePill">Score: 0 / 0</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-kicker">B.Tech CSE 2025–29 · HTML-5, CSS, JavaScript · Semester II</div>
+  <h1>CSS3 <em>MCQ</em><br>Question Bank</h1>
+  <p class="hero-sub">Strictly based on Prof. Poonam Khanvilkar's course notes. Practice all key topics before your exam.</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">210</span><span class="stat-label">Questions</span></div>
+    <div class="stat"><span class="stat-num">21</span><span class="stat-label">Topics</span></div>
+    <div class="stat"><span class="stat-num">4</span><span class="stat-label">Options Each</span></div>
+  </div>
+</section>
+
+<!-- CONTROLS -->
+<div class="controls-bar">
+  <span class="filter-label">Filter:</span>
+  <input class="search-box" type="text" id="searchBox" placeholder="Search questions…" oninput="filterQuestions()">
+  <button class="ctrl-btn" onclick="showAll()">All</button>
+  <button class="ctrl-btn" onclick="showUnanswered()">Unanswered</button>
+  <button class="ctrl-btn" onclick="showWrong()">Wrong Only</button>
+  <button class="ctrl-btn danger" onclick="resetAll()">Reset All</button>
+  <button class="ctrl-btn" onclick="window.print()">Print / PDF</button>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-text">
+    <span id="progressLabel">0 of 210 answered</span>
+    <span id="progressPct">0%</span>
+  </div>
+</div>
+
+<!-- TOPIC CHIPS -->
+<div class="topic-nav" id="topicNav"></div>
+
+<!-- QUESTIONS -->
+<div id="allSections"></div>
+
+<!-- RESULTS PANEL -->
+<div class="results-panel" id="resultsPanel">
+  <div class="results-card">
+    <div class="results-icon" id="resultsIcon">🎓</div>
+    <div class="results-title">Quiz Complete!</div>
+    <div class="results-score" id="resultsScore">0%</div>
+    <div class="results-sub" id="resultsSub">Keep practising!</div>
+    <div class="results-breakdown">
+      <div class="rb-item"><div class="rb-num c" id="rbCorrect">0</div><div class="rb-label">Correct</div></div>
+      <div class="rb-item"><div class="rb-num w" id="rbWrong">0</div><div class="rb-label">Wrong</div></div>
+      <div class="rb-item"><div class="rb-num u" id="rbUnanswered">0</div><div class="rb-label">Skipped</div></div>
+    </div>
+    <button class="ctrl-btn" onclick="resetAll()" style="margin:0 auto;display:block">Restart Quiz</button>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+//  QUESTION DATA  (210 Questions, CSS only)
+// ─────────────────────────────────────────────
+const topics = [
+  {
+    id:"intro", label:"CSS Introduction & Syntax",
+    questions:[
+      {q:"What does CSS stand for?", opts:["Computer Style Sheets","Cascading Style Sheets","Creative Styling System","Content Style Script"], ans:1},
+      {q:"Why was CSS introduced in web development?", opts:["To replace HTML","To add animations","To separate content from presentation","To store data"], ans:2},
+      {q:"Which of the following is the correct basic CSS syntax structure?", opts:["selector : {property = value}","selector { property: value; }","selector { property = value; }","property { selector: value; }"], ans:1},
+      {q:"In CSS, what does a declaration consist of?", opts:["A selector and a block","A property and a value separated by a colon","A class and an ID","A tag and an attribute"], ans:1},
+      {q:"A CSS rule set consists of one selector and how many declarations?", opts:["Exactly one","At least two","One or more enclosed in { }","Only three"], ans:2},
+      {q:"Which CSS type is applied directly inside an HTML element using the <code>style</code> attribute?", opts:["External CSS","Internal CSS","Inline CSS","Embedded CSS"], ans:2},
+      {q:"Which CSS type is defined inside a <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code>?", opts:["Inline CSS","External CSS","Internal CSS","Imported CSS"], ans:2},
+      {q:"Which CSS type is written in a separate <code>.css</code> file and is considered best practice?", opts:["Inline CSS","Internal CSS","External CSS","Embedded CSS"], ans:2},
+      {q:"What does the word 'Cascading' refer to in CSS?", opts:["The way pages scroll","Priority rules when multiple rules apply to same element","The order of HTML tags","The way images load"], ans:1},
+      {q:"Which of the following is NOT a factor in CSS cascading priority?", opts:["Specificity","!important declaration","Source order","Font size"], ans:3},
+      {q:"A semicolon at the end of a CSS declaration is used to:", opts:["End the selector","Separate multiple declarations","Open a new rule","Define inheritance"], ans:1},
+      {q:"Which of the following correctly represents a CSS comment?", opts:["// This is a comment","<!-- This is a comment -->","/* This is a comment */","** This is a comment **"], ans:2},
+    ]
+  },
+  {
+    id:"selectors", label:"CSS Selectors — Basic",
+    questions:[
+      {q:"What is a CSS selector?", opts:["A browser tool","A pattern used to select HTML elements to be styled","A value assigned to a property","A type of HTML attribute"], ans:1},
+      {q:"Which selector targets all <code>&lt;p&gt;</code> elements on a page?", opts:[".p","#p","p","*p"], ans:2},
+      {q:"Which selector targets elements with a specific class attribute?", opts:["#className",".className","className","*className"], ans:1},
+      {q:"Which selector targets a single unique element by its ID?", opts:[".idName","*idName","#idName","&idName"], ans:2},
+      {q:"Can multiple HTML elements share the same class name?", opts:["No, class names must be unique","Yes, class names can be reused","Only if they are the same tag type","Only with the !important flag"], ans:1},
+      {q:"Can multiple HTML elements share the same ID?", opts:["Yes, IDs can be reused","No, each ID must be unique on the page","Only within the same section","Yes, within different containers"], ans:1},
+      {q:"Which symbol is used to denote a class selector in CSS?", opts:["#",".","*","@"], ans:1},
+      {q:"Which symbol is used to denote an ID selector in CSS?", opts:[".","@","#","$"], ans:2},
+      {q:"When would you use an element (type) selector?", opts:["To style a single unique element","To apply common styles to all instances of a tag","To style elements in a specific state","To apply fallback styles"], ans:1},
+      {q:"What is the primary use case for an ID selector?", opts:["Reusable styles across many elements","Styling a unique single element on a page","Resetting browser defaults","Targeting child elements"], ans:1},
+    ]
+  },
+  {
+    id:"advselectors", label:"Advanced Selectors",
+    questions:[
+      {q:"Which CSS selector selects ALL elements on the page?", opts:["all","body","universal (*)","&"], ans:2},
+      {q:"What is a common use of the universal selector (<code>*</code>)?", opts:["Selecting headings","Resetting default browser styles","Styling images","Targeting links"], ans:1},
+      {q:"Which selector applies the same style to multiple selectors at once?", opts:["Universal selector","Descendant selector","Grouping selector","Attribute selector"], ans:2},
+      {q:"Which CSS syntax correctly groups <code>h1</code>, <code>h2</code>, and <code>h3</code>?", opts:["h1 h2 h3 { }","h1 + h2 + h3 { }","h1, h2, h3 { }","h1 > h2 > h3 { }"], ans:2},
+      {q:"What benefit does grouping selectors provide?", opts:["Faster rendering","Reduces code duplication","Increases specificity","Adds animations"], ans:1},
+      {q:"The descendant selector <code>div p</code> targets:", opts:["All <p> tags directly inside div only","All <p> tags anywhere inside a div","Only the first <p> inside div","Sibling <p> elements of div"], ans:1},
+      {q:"The child selector <code>ul &gt; li</code> targets:", opts:["All li elements anywhere inside ul","Only direct child li elements of ul","li elements adjacent to ul","li elements that follow ul"], ans:1},
+      {q:"What is the difference between a descendant selector and a child selector?", opts:["No difference","Descendant targets any nested level; child targets only direct children","Child targets any nested level; descendant targets only direct children","Descendant works on classes; child works on IDs"], ans:1},
+      {q:"Which CSS selector targets an input element with <code>type='text'</code>?", opts:["input.text","input#text","input[type='text']","input:text"], ans:2},
+      {q:"What is a common use case for attribute selectors?", opts:["Styling headings","Styling form elements based on their type attribute","Resetting margins","Adding transitions"], ans:1},
+      {q:"Adjacent sibling selector uses which symbol?", opts:["~",">","+","&"], ans:2},
+      {q:"Which selector would style only <code>p</code> elements that are direct children of a <code>div</code>?", opts:["div p","div + p","div ~ p","div > p"], ans:3},
+    ]
+  },
+  {
+    id:"pseudo", label:"Pseudo-class & Pseudo-element Selectors",
+    questions:[
+      {q:"Pseudo-class selectors target elements based on:", opts:["Their tag name","Their ID","A specific state or condition","Their parent element"], ans:2},
+      {q:"Which pseudo-class applies styles when a user hovers over an element?", opts:[":hover",":focus",":active",":visited"], ans:0},
+      {q:"Which pseudo-class applies styles to a focused form input?", opts:[":hover",":focus",":active",":checked"], ans:1},
+      {q:"Which pseudo-class styles a link that has already been visited?", opts:[":link",":hover",":active",":visited"], ans:3},
+      {q:"Which pseudo-class applies styles to the state when a link is being clicked?", opts:[":visited",":active",":hover",":focus"], ans:1},
+      {q:"Which pseudo-class selects the first child of its parent?", opts:[":first",":first-of-type",":first-child",":nth-child(1)"], ans:2},
+      {q:"What do pseudo-element selectors target?", opts:["Elements in a specific state","Specific parts of an element","All child elements","External elements"], ans:1},
+      {q:"Which pseudo-element styles the first letter of a paragraph?", opts:["::first-line","::first-letter","::before","::after"], ans:1},
+      {q:"Which pseudo-element inserts content before an element's content?", opts:["::after","::before","::insert","::prepend"], ans:1},
+      {q:"Which pseudo-element inserts content after an element's content?", opts:["::before","::append","::after","::end"], ans:2},
+      {q:"What is the CSS syntax difference between pseudo-classes and pseudo-elements?", opts:["Pseudo-classes use :: and pseudo-elements use :","Pseudo-classes use : and pseudo-elements use ::","Both use : ","Both use ::"], ans:1},
+      {q:"Which pseudo-class selects every odd-numbered child element?", opts:[":odd",":first",":nth-child(odd)",":alternate"], ans:2},
+      {q:"The <code>a:link</code> pseudo-class styles links that:", opts:["Have been visited","Have never been visited","Are currently hovered","Are being clicked"], ans:1},
+    ]
+  },
+  {
+    id:"specificity", label:"CSS Specificity & Cascade",
+    questions:[
+      {q:"What does CSS specificity determine?", opts:["Which element gets the largest font","Which CSS rule takes precedence when multiple rules apply","How elements are positioned","The order of rendering"], ans:1},
+      {q:"Which has the HIGHEST specificity in CSS?", opts:["Element selector","Class selector","ID selector","Inline style"], ans:3},
+      {q:"Which selector type has the LOWEST specificity?", opts:["ID selector","Class selector","Inline style","Element (type) selector"], ans:3},
+      {q:"In the specificity order, what comes after Inline styles?", opts:["Element selectors","Class selectors","ID selectors","Universal selector"], ans:2},
+      {q:"Which CSS declaration overrides all other rules regardless of specificity?", opts:["!override","!priority","!important","!force"], ans:2},
+      {q:"If two rules have the same specificity, which one applies?", opts:["The first one","The one with more properties","The last one (source order)","The one with !important"], ans:2},
+      {q:"What is the specificity value of a class selector?", opts:["1,0,0","0,0,1","0,1,0","1,0,1"], ans:2},
+      {q:"What is the specificity of an ID selector?", opts:["0,1,0","1,0,0","0,0,1","1,1,0"], ans:1},
+      {q:"Combining selectors increases which value?", opts:["Font size","Specificity","Line height","Inheritance"], ans:1},
+      {q:"What does 'source order' mean in CSS cascading?", opts:["The order files are downloaded","When equal specificity, the rule written last wins","Rules from parent elements take priority","External CSS always wins over internal"], ans:1},
+    ]
+  },
+  {
+    id:"background", label:"Background Styling",
+    questions:[
+      {q:"Which CSS property sets the background color of an element?", opts:["bg-color","color","background-color","fill"], ans:2},
+      {q:"Which CSS property sets a background image for an element?", opts:["background-src","background-url","image-url","background-image"], ans:3},
+      {q:"Which CSS property controls if/how a background image repeats?", opts:["background-tile","background-position","background-repeat","background-size"], ans:2},
+      {q:"Which value of <code>background-repeat</code> stops the image from repeating?", opts:["repeat-x","repeat-y","repeat","no-repeat"], ans:3},
+      {q:"Which CSS property controls the position of a background image?", opts:["background-location","background-origin","background-position","background-align"], ans:2},
+      {q:"Which CSS3 property controls the size of a background image?", opts:["background-zoom","background-scale","background-size","background-width"], ans:2},
+      {q:"Which value of <code>background-size</code> scales image to cover the entire area?", opts:["fill","contain","auto","cover"], ans:3},
+      {q:"Which value of <code>background-size</code> scales the image to fit without clipping?", opts:["cover","fill","contain","auto"], ans:2},
+      {q:"Which CSS property was used in early HTML (before CSS) for setting background colors?", opts:["background-color","fill","bgcolor","background"], ans:2},
+      {q:"In which CSS version were background images and positioning first added?", opts:["CSS1","CSS2","CSS3","CSS4"], ans:1},
+      {q:"Which CSS3 feature allows multiple background images on one element?", opts:["background-list","background-stack","background-image (multiple values)","background-layers"], ans:2},
+      {q:"CSS gradients are defined using which CSS property?", opts:["background-color","background-gradient","background-image","background-fill"], ans:2},
+      {q:"Which CSS function creates a linear gradient?", opts:["gradient()","linear-color()","linear-gradient()","color-stop()"], ans:2},
+      {q:"Which shorthand property combines all background properties?", opts:["background","bg","backdrop","fill"], ans:0},
+      {q:"The <code>background-attachment</code> property with value <code>fixed</code> does what?", opts:["Fixes the element in place","Makes the background scroll with the element","Fixes the background relative to the viewport","Prevents background from displaying"], ans:2},
+    ]
+  },
+  {
+    id:"text", label:"Text Styling",
+    questions:[
+      {q:"Which CSS property aligns text horizontally?", opts:["vertical-align","text-align","font-align","align-content"], ans:1},
+      {q:"Which value of <code>text-align</code> makes text flush with both left and right edges?", opts:["center","right","left","justify"], ans:3},
+      {q:"Which CSS property adds decoration like underline to text?", opts:["text-style","font-decoration","text-decoration","text-effect"], ans:2},
+      {q:"Which CSS property controls the spacing between words?", opts:["letter-spacing","word-spacing","text-spacing","line-height"], ans:1},
+      {q:"Which CSS property controls the spacing between individual characters?", opts:["word-spacing","letter-spacing","char-spacing","text-gap"], ans:1},
+      {q:"Which CSS property controls the height between lines of text?", opts:["line-spacing","text-height","row-height","line-height"], ans:3},
+      {q:"Which CSS property transforms text to uppercase, lowercase, or capitalize?", opts:["font-transform","text-case","text-transform","letter-case"], ans:2},
+      {q:"Which CSS property sets the color of text?", opts:["text-color","font-color","background-color","color"], ans:3},
+      {q:"Which CSS property adds indentation to the first line of a paragraph?", opts:["text-padding","first-line","text-indent","margin-left"], ans:2},
+      {q:"The value <code>text-transform: capitalize</code> does what?", opts:["Makes all letters uppercase","Makes all letters lowercase","Capitalizes the first letter of each word","Capitalizes only the first word"], ans:2},
+      {q:"Which CSS property controls the direction of text?", opts:["text-align","text-transform","direction","text-flow"], ans:2},
+      {q:"Which text-align value was introduced specifically to support right-to-left languages?", opts:["end","right","rtl","justify"], ans:0},
+    ]
+  },
+  {
+    id:"fonts", label:"Fonts in CSS",
+    questions:[
+      {q:"Which CSS property sets the typeface/font face of text?", opts:["font-type","font-face","font-name","font-family"], ans:3},
+      {q:"Which CSS property sets the size of the text?", opts:["font-weight","text-size","font-size","text-scale"], ans:2},
+      {q:"Which CSS property sets how thick or thin the characters appear?", opts:["font-size","font-weight","font-style","font-variant"], ans:1},
+      {q:"Which CSS property makes text italic?", opts:["font-weight: italic","text-style: italic","font-style: italic","text-transform: italic"], ans:2},
+      {q:"What is a fallback font in CSS?", opts:["A font that loads first","An alternative font used if the primary font fails","A font stored locally","A CSS variable for font"], ans:1},
+      {q:"Which CSS at-rule allows you to use custom web fonts?", opts:["@import","@font-face","@web-font","@custom-font"], ans:1},
+      {q:"What is the purpose of <code>font-family: sans-serif</code> as a fallback?", opts:["It adds a custom font","It ensures a generic sans-serif font is used if others fail","It removes all font styling","It makes text italic"], ans:1},
+      {q:"Which CSS version introduced <code>@font-face</code> for custom web fonts?", opts:["CSS1","CSS2","CSS3","CSS4"], ans:2},
+      {q:"What unit is commonly used for scalable font sizes?", opts:["px","mm","rem","cm"], ans:2},
+      {q:"In CSS, <code>font-weight: bold</code> is equivalent to which numeric value?", opts:["400","600","700","900"], ans:2},
+      {q:"Which font category includes fonts like Arial and Helvetica?", opts:["Serif","Monospace","Cursive","Sans-serif"], ans:3},
+      {q:"Which font category includes fonts like Times New Roman?", opts:["Sans-serif","Monospace","Serif","Fantasy"], ans:2},
+      {q:"The CSS <code>font</code> shorthand property can set:", opts:["Only font-size","Only font-family","Multiple font properties at once","Only font-weight and font-style"], ans:2},
+      {q:"Early websites were limited to what type of fonts?", opts:["Web fonts","Custom fonts","System fonts installed on the user's device","CDN fonts"], ans:2},
+    ]
+  },
+  {
+    id:"links", label:"Styling Links",
+    questions:[
+      {q:"What is the default style of links in most browsers?", opts:["Red and underlined","Blue and underlined","Black and bold","Green and bold"], ans:1},
+      {q:"Which pseudo-class styles a link that has never been visited?", opts:[":active",":visited",":hover",":link"], ans:3},
+      {q:"Which pseudo-class styles a link that was previously clicked?", opts:[":link",":hover",":visited",":active"], ans:2},
+      {q:"Which pseudo-class adds a style while the user is clicking a link?", opts:[":visited",":hover",":link",":active"], ans:3},
+      {q:"In what CSS version were pseudo-classes like <code>:hover</code> introduced for link styling?", opts:["CSS1","CSS2","CSS3","CSS4"], ans:0},
+      {q:"Which CSS property is commonly used to remove the default underline from links?", opts:["text-transform: none","text-decoration: none","font-style: normal","border-bottom: none"], ans:1},
+      {q:"What is the correct order of link pseudo-classes (LVHA rule)?", opts:[":hover, :link, :visited, :active",":link, :visited, :hover, :active",":active, :visited, :link, :hover",":visited, :link, :active, :hover"], ans:1},
+      {q:"Why should link styling include hover states?", opts:["Required by browsers","Provides visual feedback and improves usability","Increases page speed","Required for accessibility"], ans:1},
+    ]
+  },
+  {
+    id:"lists", label:"Styling Lists",
+    questions:[
+      {q:"Which CSS property controls the style of list item markers?", opts:["list-type","bullet-style","list-style-type","marker-type"], ans:2},
+      {q:"Which value removes bullet points from an unordered list?", opts:["list-style-type: remove","list-style-type: blank","list-style-type: none","list-style-type: hidden"], ans:2},
+      {q:"Which value makes list markers display as square bullets?", opts:["list-style-type: circle","list-style-type: square","list-style-type: disc","list-style-type: box"], ans:1},
+      {q:"Which CSS property sets an image as a list item marker?", opts:["list-image","list-style-image","list-src","marker-image"], ans:1},
+      {q:"In which CSS version were <code>list-style</code> properties first introduced?", opts:["CSS1","CSS2","CSS3","CSS4"], ans:0},
+      {q:"Which property controls the position of the list marker (inside or outside)?", opts:["list-position","marker-align","list-style-position","bullet-position"], ans:2},
+      {q:"The <code>list-style</code> shorthand property can set which sub-properties?", opts:["Only list-style-type","list-style-type, list-style-position, list-style-image","Only list-style-image","list-style-type and list-style-color"], ans:1},
+      {q:"Lists in CSS became layout components mostly due to which technique?", opts:["Float-based styling","Grid layout","The introduction of flexbox","Using inline-block display"], ans:0},
+    ]
+  },
+  {
+    id:"tables", label:"Styling Tables",
+    questions:[
+      {q:"Which CSS property merges adjacent table borders into a single border?", opts:["border-merge","border-collapse","table-border","border-join"], ans:1},
+      {q:"Which value of <code>border-collapse</code> separates borders with a gap?", opts:["merge","collapse","separate","apart"], ans:2},
+      {q:"Which CSS property controls the space between table cell borders?", opts:["cell-padding","border-gap","border-spacing","table-gap"], ans:2},
+      {q:"Which CSS property controls padding inside table cells?", opts:["cell-spacing","padding","table-padding","cell-padding"], ans:1},
+      {q:"Which CSS pseudo-class styles alternating table rows?", opts:[":nth-row","nth-child(even)","tr:nth-child(even)","row:alternate"], ans:2},
+      {q:"Which CSS property aligns content vertically inside table cells?", opts:["text-align","cell-align","valign","vertical-align"], ans:3},
+      {q:"In early web development, tables were misused for:", opts:["Displaying data","Page layout","Navigation","Media embedding"], ans:1},
+      {q:"Which CSS version encouraged separation of layout and table data?", opts:["CSS1","CSS2","CSS3","CSS4"], ans:1},
+    ]
+  },
+  {
+    id:"boxmodel", label:"CSS Box Model",
+    questions:[
+      {q:"The CSS Box Model defines every HTML element as a rectangular box consisting of how many components?", opts:["Two","Three","Four","Five"], ans:2},
+      {q:"Which part of the box model represents the actual content area?", opts:["Margin","Padding","Border","Content"], ans:3},
+      {q:"Which part of the box model is the space between the content and the border?", opts:["Margin","Padding","Outline","Gap"], ans:1},
+      {q:"Which part of the box model is outside the padding, forming the visible edge?", opts:["Content","Margin","Padding","Border"], ans:1},
+      {q:"Which part of the box model is the outermost transparent space between elements?", opts:["Padding","Border","Margin","Content"], ans:2},
+      {q:"By default, which CSS <code>box-sizing</code> value includes only the content in width/height?", opts:["border-box","padding-box","content-box","margin-box"], ans:2},
+      {q:"Which <code>box-sizing</code> value includes padding and border in width/height calculations?", opts:["content-box","margin-box","padding-box","border-box"], ans:3},
+      {q:"In which CSS version was the Box Model first introduced?", opts:["CSS2","CSS3","CSS1","CSS4"], ans:2},
+      {q:"If an element has <code>width: 200px; padding: 20px; border: 5px</code> and uses <code>content-box</code>, its total rendered width is:", opts:["200px","220px","245px","250px"], ans:3},
+      {q:"The <code>margin: auto</code> trick is commonly used to:", opts:["Remove all margins","Center a block element horizontally","Add padding","Set margin to zero"], ans:1},
+      {q:"Which shorthand writes <code>padding: 10px 20px 15px 5px</code> in which order?", opts:["Left Right Top Bottom","Top Bottom Left Right","Top Right Bottom Left","Left Top Right Bottom"], ans:2},
+      {q:"Negative margins in CSS:", opts:["Are invalid","Can pull elements closer or overlap them","Add extra space","Only work on inline elements"], ans:1},
+      {q:"The Box Model was standardized to resolve what issue?", opts:["Font rendering","Inconsistent layout implementations across browsers","Color display","Image loading"], ans:1},
+    ]
+  },
+  {
+    id:"borders", label:"Borders & Outline",
+    questions:[
+      {q:"Which CSS property sets the width of a border?", opts:["border-size","border-thickness","border-width","outline-width"], ans:2},
+      {q:"Which CSS property sets the style of a border (solid, dashed, etc.)?", opts:["border-design","border-type","border-display","border-style"], ans:3},
+      {q:"Which CSS property sets the color of a border?", opts:["border-fill","border-color","border-hue","border-tint"], ans:1},
+      {q:"Which CSS shorthand sets all three border properties at once?", opts:["border-all","border","borders","border-full"], ans:1},
+      {q:"Which CSS3 property creates rounded corners on elements?", opts:["corner-radius","box-curve","border-radius","outline-radius"], ans:2},
+      {q:"Which CSS3 property allows using an image as a border?", opts:["border-src","border-picture","border-image","border-url"], ans:2},
+      {q:"How does an <strong>outline</strong> differ from a <strong>border</strong>?", opts:["Outline is inside the border","Outline is drawn outside the border and does NOT affect layout size","Outline adds to the element's dimensions","Outline is only for text elements"], ans:1},
+      {q:"In which CSS version was the <code>outline</code> property introduced?", opts:["CSS1","CSS2","CSS3","CSS4"], ans:1},
+      {q:"Outline is commonly used for:", opts:["Decorative purposes only","Highlighting focus states and keyboard navigation","Setting element width","Adding gradients"], ans:1},
+      {q:"Which CSS property removes the default outline from a focused element?", opts:["outline: hidden","outline: remove","outline: 0 / outline: none","focus: none"], ans:2},
+      {q:"Which border-style value makes a border appear as dots?", opts:["dashed","groove","dotted","double"], ans:2},
+      {q:"Which border-style value makes a border appear as a two-line border?", opts:["groove","ridge","double","inset"], ans:2},
+      {q:"The <code>border-collapse</code> property is specific to which element?", opts:["div","form","img","table"], ans:3},
+      {q:"Setting <code>border-radius: 50%</code> on an equal-width/height element creates:", opts:["A square","A triangle","A perfect circle","A hexagon"], ans:2},
+    ]
+  },
+  {
+    id:"display", label:"Dimensions & Display",
+    questions:[
+      {q:"Which CSS property controls the width of an element?", opts:["size","breadth","width","x-size"], ans:2},
+      {q:"Which CSS property controls the height of an element?", opts:["height","y-size","length","depth"], ans:0},
+      {q:"Which CSS property sets the maximum width an element can have?", opts:["min-width","top-width","max-width","limit-width"], ans:2},
+      {q:"Which CSS property sets the minimum height an element can have?", opts:["max-height","base-height","min-height","floor-height"], ans:2},
+      {q:"Which CSS property controls how an element participates in document flow?", opts:["position","float","layout","display"], ans:3},
+      {q:"Which <code>display</code> value makes an element take the full width and start on a new line?", opts:["inline","inline-block","block","flex"], ans:2},
+      {q:"Which <code>display</code> value makes an element flow inline like text but respect width/height?", opts:["block","flex","inline","inline-block"], ans:2},
+      {q:"Which <code>display</code> value completely hides an element and removes it from layout?", opts:["visibility: hidden","display: hidden","display: none","opacity: 0"], ans:2},
+      {q:"The difference between <code>display: none</code> and <code>visibility: hidden</code> is:", opts:["No difference","display:none removes element from layout; visibility:hidden hides but keeps space","visibility:hidden removes element from layout; display:none keeps space","Both keep the space"], ans:1},
+      {q:"Which unit represents percentage of the viewport width?", opts:["em","vw","vh","rem"], ans:1},
+      {q:"Which unit represents percentage of the viewport height?", opts:["vw","em","vh","rem"], ans:2},
+      {q:"Which unit is relative to the root element's font size?", opts:["em","px","rem","vw"], ans:2},
+      {q:"The <code>overflow</code> property controls what happens when content exceeds its container. Which value adds a scrollbar?", opts:["hidden","visible","auto/scroll","clip"], ans:2},
+    ]
+  },
+  {
+    id:"positioning", label:"CSS Positioning",
+    questions:[
+      {q:"Which CSS property is used for positioning elements?", opts:["align","layout","position","place"], ans:2},
+      {q:"Which <code>position</code> value is the default (follows normal document flow)?", opts:["fixed","relative","absolute","static"], ans:3},
+      {q:"Which <code>position</code> value moves an element relative to its normal position without taking it out of flow?", opts:["static","absolute","relative","fixed"], ans:2},
+      {q:"Which <code>position</code> value places an element relative to its nearest positioned ancestor and removes it from normal flow?", opts:["relative","static","fixed","absolute"], ans:3},
+      {q:"Which <code>position</code> value fixes an element relative to the browser viewport?", opts:["absolute","sticky","fixed","relative"], ans:2},
+      {q:"Which <code>position</code> value acts like relative until a scroll threshold, then acts like fixed?", opts:["fixed","absolute","relative","sticky"], ans:3},
+      {q:"In which CSS version was positioning introduced?", opts:["CSS1","CSS3","CSS2","CSS4"], ans:2},
+      {q:"Which CSS property controls the stacking order of positioned elements?", opts:["stack-order","layer","z-index","depth"], ans:2},
+      {q:"A higher <code>z-index</code> value places an element:", opts:["Behind other elements","In front of elements with lower z-index","At the bottom of the page","Out of flow"], ans:1},
+      {q:"The <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> properties work only when <code>position</code> is:", opts:["static","any value","not static","only absolute"], ans:2},
+      {q:"Which positioning type is best for a sticky navigation bar?", opts:["static","absolute","sticky or fixed","relative"], ans:2},
+      {q:"Which CSS property replaced layout tables for positioning?", opts:["Float","CSS positioning","Inline-block","Flexbox"], ans:1},
+    ]
+  },
+  {
+    id:"float", label:"Float & Navigation Bar",
+    questions:[
+      {q:"What was the original design purpose of the CSS <code>float</code> property?", opts:["Creating page layouts","Wrapping text around images","Centering elements","Positioning elements absolutely"], ans:1},
+      {q:"Which values can the CSS <code>float</code> property take?", opts:["top, bottom","left, right, none, inherit","center, justify","block, inline"], ans:1},
+      {q:"Which CSS property is used to stop elements from wrapping around a floated element?", opts:["stop","no-float","clear","reset-float"], ans:2},
+      {q:"What problem does 'collapsing container' refer to with floats?", opts:["The container width collapses","The parent container has zero height because all children are floated","The elements disappear","The text overlaps"], ans:1},
+      {q:"What technique fixes the collapsing container problem with floats?", opts:["Adding extra margin","Clearfix hack (overflow:hidden or ::after clear)","Using !important","Adding position:absolute"], ans:1},
+      {q:"Which <code>clear</code> value stops wrapping on both left and right sides?", opts:["clear: none","clear: left","clear: right","clear: both"], ans:3},
+      {q:"Floats were the dominant layout method before which modern CSS feature?", opts:["CSS Grid","Positioning","Flexbox","Multi-column layout"], ans:2},
+      {q:"For modern layouts, which technique has largely replaced float-based approaches?", opts:["clear:both","CSS Positioning","CSS Grid and Flexbox","Display:table"], ans:2},
+      {q:"Float is still valid and commonly used today for:", opts:["Page layout grids","Wrapping text around images","Centering divs","Sticky headers"], ans:1},
+      {q:"Navigation bars evolved through which progression?", opts:["Tables → Flex → Grid","Tables → Floats → Modern layout (Flexbox/Grid)","Floats → Tables → Grid","Inline → Block → Grid"], ans:1},
+    ]
+  },
+  {
+    id:"opacity", label:"Image Gallery & Opacity",
+    questions:[
+      {q:"Which CSS property controls the transparency of an element?", opts:["transparency","alpha","filter","opacity"], ans:3},
+      {q:"What is the range of valid values for the CSS <code>opacity</code> property?", opts:["0 to 100","0% to 100%","0 to 1","−1 to 1"], ans:2},
+      {q:"An <code>opacity</code> value of <code>0</code> means:", opts:["Fully visible","50% transparent","Fully transparent (invisible)","Double opacity"], ans:2},
+      {q:"An <code>opacity</code> value of <code>1</code> means:", opts:["Fully transparent","50% visible","No effect","Fully opaque (normal)"], ans:3},
+      {q:"In which CSS version was the <code>opacity</code> property introduced?", opts:["CSS1","CSS2","CSS3","CSS4"], ans:2},
+      {q:"Opacity affects:", opts:["Only the background of an element","Only the text color","The element AND all its children","Only borders"], ans:2},
+      {q:"Which CSS approach creates a transparent background without affecting child elements?", opts:["opacity: 0.5","visibility: hidden","background: rgba(0,0,0,0.5)","display: transparent"], ans:2},
+      {q:"A common use of opacity in image galleries is:", opts:["Changing image size","Adding hover fade effects","Changing image format","Cropping images"], ans:1},
+    ]
+  },
+  {
+    id:"css3effects", label:"CSS3 Borders & Backgrounds",
+    questions:[
+      {q:"Which CSS3 property adds shadow to box elements?", opts:["element-shadow","border-shadow","text-shadow","box-shadow"], ans:3},
+      {q:"The <code>box-shadow</code> property syntax is:", opts:["offset-x | color | blur","offset-x | offset-y | blur-radius | color","color | blur | radius","radius | color | spread"], ans:1},
+      {q:"Which CSS3 property adds shadow to text?", opts:["font-shadow","box-shadow","text-shadow","letter-shadow"], ans:2},
+      {q:"What CSS3 feature allows creating color gradients without images?", opts:["background-color","background-gradient (using background-image)","gradient-background","color-range"], ans:1},
+      {q:"Which function creates a circular gradient in CSS?", opts:["circle-gradient()","radial-gradient()","round-gradient()","conic-gradient()"], ans:1},
+      {q:"Before CSS3, how were visual effects like rounded corners and shadows achieved?", opts:["Using JavaScript","Using CSS variables","Using image files","Using SVG always"], ans:2},
+      {q:"CSS3 significantly reduced what in web development?", opts:["Number of HTML tags","Use of image files for decorative effects","Browser support","JavaScript code"], ans:1},
+      {q:"The <code>border-image</code> property allows:", opts:["Setting font of border text","Using an image as the border","Adding animation to borders","Removing borders"], ans:1},
+    ]
+  },
+  {
+    id:"transforms", label:"Text Effects & Transforms",
+    questions:[
+      {q:"Which CSS property applies 2D or 3D transformations to elements?", opts:["transition","animation","transform","convert"], ans:2},
+      {q:"Which <code>transform</code> function rotates an element?", opts:["rotate()","spin()","turn()","revolve()"], ans:0},
+      {q:"Which <code>transform</code> function scales (resizes) an element?", opts:["resize()","scale()","zoom()","stretch()"], ans:1},
+      {q:"Which <code>transform</code> function moves an element along X/Y axes?", opts:["shift()","move()","position()","translate()"], ans:3},
+      {q:"Which <code>transform</code> function skews an element?", opts:["angle()","skew()","slant()","tilt()"], ans:1},
+      {q:"In which CSS version were transforms introduced?", opts:["CSS1","CSS2","CSS3","CSS4"], ans:2},
+      {q:"What advantage do CSS transforms have over JavaScript-based animations?", opts:["More features","Hardware-accelerated rendering and better performance","More browser support","Simpler syntax"], ans:1},
+      {q:"The <code>transform-origin</code> property controls:", opts:["The direction of animation","The starting point of the transformation","The duration of transform","The color change during transform"], ans:1},
+      {q:"Which CSS property adds shadow specifically to text?", opts:["box-shadow","font-shadow","text-shadow","letter-shadow"], ans:2},
+      {q:"The <code>text-shadow</code> property takes which values?", opts:["x-offset y-offset blur-radius color","color width height","x y color size","radius color blur"], ans:0},
+    ]
+  },
+  {
+    id:"transitions", label:"CSS Transitions",
+    questions:[
+      {q:"What do CSS transitions do?", opts:["Replace JavaScript entirely","Animate changes between CSS property states smoothly","Define keyframe animations","Add 3D effects"], ans:1},
+      {q:"Which CSS property specifies which property to animate in a transition?", opts:["transition-target","transition-effect","transition-property","transition-type"], ans:2},
+      {q:"Which CSS property specifies how long a transition takes?", opts:["transition-delay","transition-speed","transition-time","transition-duration"], ans:3},
+      {q:"Which CSS property specifies when a transition starts (wait time)?", opts:["transition-start","transition-duration","transition-delay","transition-wait"], ans:2},
+      {q:"Which CSS property controls the speed curve of a transition?", opts:["transition-function","transition-speed","transition-timing-function","transition-curve"], ans:2},
+      {q:"Which <code>transition-timing-function</code> value starts fast then slows down?", opts:["ease-in","ease","ease-out","linear"], ans:2},
+      {q:"Which <code>transition-timing-function</code> value maintains constant speed?", opts:["ease","linear","ease-in","ease-out"], ans:1},
+      {q:"In which CSS version were transitions introduced?", opts:["CSS1","CSS2","CSS3","CSS4"], ans:2},
+      {q:"The <code>transition</code> shorthand combines which properties?", opts:["property and duration only","property, duration, timing-function, delay","duration and delay only","property and delay only"], ans:1},
+      {q:"CSS transitions are most commonly triggered by:", opts:["Page load","Scroll events","Pseudo-classes like :hover, :focus","JavaScript only"], ans:2},
+      {q:"Why are CSS transitions preferred over JavaScript animations for simple effects?", opts:["CSS transitions load faster","Better performance via hardware acceleration and simpler code","JavaScript doesn't support animations","CSS transitions have more effects"], ans:1},
+    ]
+  },
+  {
+    id:"responsive", label:"Responsive Web Design & Media Queries",
+    questions:[
+      {q:"What is Responsive Web Design?", opts:["Design using only mobile screens","Design that uses JavaScript for layout","Design that adapts layouts to different screen sizes and devices","Design using only fixed pixel widths"], ans:2},
+      {q:"Which HTML meta tag is essential for responsive design?", opts:["<meta charset>","<meta description>","<meta viewport>","<meta keywords>"], ans:2},
+      {q:"What does <code>content='width=device-width, initial-scale=1.0'</code> do in the viewport meta tag?", opts:["Sets font size","Makes the viewport match device width and sets default zoom to 1","Adds scrollbars","Prevents zooming"], ans:1},
+      {q:"What are CSS Media Queries?", opts:["Queries to fetch data from servers","CSS rules that apply styles conditionally based on device characteristics","JavaScript functions for media","HTML attributes for responsive design"], ans:1},
+      {q:"Which CSS at-rule is used to write media queries?", opts:["@query","@device","@media","@screen"], ans:2},
+      {q:"Which media feature checks the width of the browser viewport?", opts:["device-width","screen-size","max-width / min-width","viewport-width"], ans:2},
+      {q:"Which approach designs for mobile screens first, then adds styles for larger screens?", opts:["Desktop-first","Mobile-first","Adaptive design","Fixed design"], ans:1},
+      {q:"In mobile-first CSS, you add complexity using:", opts:["max-width media queries","min-width media queries","pixel-only units","Fixed widths"], ans:1},
+      {q:"Fluid containers use which type of width values?", opts:["Fixed pixel values","Percentage-based widths","Viewport units only","Em units only"], ans:1},
+      {q:"Which CSS unit is relative to the viewport width?", opts:["em","rem","vw","px"], ans:2},
+      {q:"Which CSS framework concept uses a 12-column grid for responsive layouts?", opts:["Flexbox","Bootstrap-style grid","CSS Grid","Float-based layout"], ans:1},
+      {q:"The viewport meta tag became essential after smartphones became widespread. Around which year?", opts:["1999","2003","2007+","2015"], ans:2},
+    ]
+  }
+];
+
+// ─────────────────────────────────────────────
+//  STATE
+// ─────────────────────────────────────────────
+let state = {}; // { cardId: { chosen, correct } }
+let totalQ = 0;
+
+// Flatten & total
+topics.forEach(t => totalQ += t.questions.length);
+
+// ─────────────────────────────────────────────
+//  BUILD DOM
+// ─────────────────────────────────────────────
+function buildUI() {
+  const sectionsEl = document.getElementById('allSections');
+  const topicNavEl = document.getElementById('topicNav');
+  sectionsEl.innerHTML = '';
+  topicNavEl.innerHTML = '';
+
+  // All chip
+  const allChip = document.createElement('button');
+  allChip.className = 'topic-chip active'; allChip.id = 'chip-all';
+  allChip.textContent = 'All Topics';
+  allChip.onclick = () => { filterByTopic('all'); };
+  topicNavEl.appendChild(allChip);
+
+  topics.forEach((topic, ti) => {
+    // Topic chip
+    const chip = document.createElement('button');
+    chip.className = 'topic-chip'; chip.id = 'chip-' + topic.id;
+    chip.textContent = topic.label;
+    chip.onclick = () => filterByTopic(topic.id);
+    topicNavEl.appendChild(chip);
+
+    // Section header
+    const sh = document.createElement('div');
+    sh.className = 'section-header'; sh.dataset.topicId = topic.id;
+    sh.innerHTML = `<div class="section-title">${topic.label}</div><div class="section-line"></div><div class="section-count">${topic.questions.length} questions</div>`;
+    sectionsEl.appendChild(sh);
+
+    // Questions container
+    const qc = document.createElement('div');
+    qc.className = 'questions-container'; qc.dataset.topicContainer = topic.id;
+    sectionsEl.appendChild(qc);
+
+    let globalNum = 0;
+    topics.slice(0, ti).forEach(pt => globalNum += pt.questions.length);
+
+    topic.questions.forEach((qobj, qi) => {
+      const cardId = `${topic.id}_${qi}`;
+      const num = globalNum + qi + 1;
+      const card = buildCard(cardId, qobj, num, topic.label);
+      qc.appendChild(card);
+    });
+  });
+  updateProgress();
+}
+
+function buildCard(cardId, qobj, num, topicLabel) {
+  const card = document.createElement('div');
+  card.className = 'q-card'; card.id = 'card-' + cardId;
+
+  const letters = ['A','B','C','D'];
+  const opts = qobj.opts.map((o, i) => `
+    <div class="q-option" id="opt-${cardId}-${i}" onclick="choose('${cardId}', ${i}, ${qobj.ans})">
+      <span class="opt-letter">${letters[i]}.</span>
+      <span class="opt-text">${formatText(o)}</span>
+    </div>`).join('');
+
+  card.innerHTML = `
+    <div class="q-header">
+      <span class="q-number">Q ${num}</span>
+      <span class="q-topic-tag">${topicLabel}</span>
+      <span class="q-text">${formatText(qobj.q)}</span>
+    </div>
+    <div class="q-options">${opts}</div>
+    <div class="q-feedback" id="fb-${cardId}">
+      <span class="fb-icon"></span>
+      <span class="fb-text"></span>
+    </div>`;
+  return card;
+}
+
+function formatText(t) {
+  // wrap <code> tags
+  return t;
+}
+
+// ─────────────────────────────────────────────
+//  CHOOSE ANSWER
+// ─────────────────────────────────────────────
+function choose(cardId, chosen, correct) {
+  if (state[cardId]) return; // already answered
+  state[cardId] = { chosen, correct };
+
+  const isCorrect = chosen === correct;
+  const card = document.getElementById('card-' + cardId);
+  const fb = document.getElementById('fb-' + cardId);
+
+  // Style options
+  for (let i = 0; i < 4; i++) {
+    const opt = document.getElementById(`opt-${cardId}-${i}`);
+    if (opt) {
+      opt.classList.add('disabled');
+      if (i === correct) opt.classList.add('reveal-correct');
+    }
+  }
+  const chosenOpt = document.getElementById(`opt-${cardId}-${chosen}`);
+  if (chosenOpt && chosen !== correct) {
+    chosenOpt.classList.remove('reveal-correct');
+    chosenOpt.classList.add('selected-wrong');
+  }
+  if (chosenOpt && chosen === correct) {
+    chosenOpt.classList.remove('reveal-correct');
+    chosenOpt.classList.add('selected-correct');
+  }
+
+  // Card border
+  card.classList.add(isCorrect ? 'answered-correct' : 'answered-wrong');
+
+  // Feedback
+  fb.className = 'q-feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+  fb.querySelector('.fb-icon').textContent = isCorrect ? '✓' : '✗';
+  fb.querySelector('.fb-text').textContent = isCorrect
+    ? 'Correct! Well done.'
+    : `Incorrect. The correct answer was: ${['A','B','C','D'][correct]}. `;
+
+  updateProgress();
+  checkComplete();
+}
+
+// ─────────────────────────────────────────────
+//  PROGRESS
+// ─────────────────────────────────────────────
+function updateProgress() {
+  const answered = Object.keys(state).length;
+  const correct = Object.values(state).filter(s => s.chosen === s.correct).length;
+  const pct = totalQ ? Math.round((answered / totalQ) * 100) : 0;
+
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = `${answered} of ${totalQ} answered`;
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('livePill').textContent = `Score: ${correct} / ${answered}`;
+}
+
+function checkComplete() {
+  const answered = Object.keys(state).length;
+  if (answered === totalQ) showResults();
+}
+
+// ─────────────────────────────────────────────
+//  RESULTS
+// ─────────────────────────────────────────────
+function showResults() {
+  const answered = Object.keys(state).length;
+  const correct = Object.values(state).filter(s => s.chosen === s.correct).length;
+  const wrong = Object.values(state).filter(s => s.chosen !== s.correct).length;
+  const pct = Math.round((correct / totalQ) * 100);
+
+  document.getElementById('resultsScore').textContent = pct + '%';
+  document.getElementById('rbCorrect').textContent = correct;
+  document.getElementById('rbWrong').textContent = wrong;
+  document.getElementById('rbUnanswered').textContent = totalQ - answered;
+  document.getElementById('resultsIcon').textContent = pct >= 80 ? '🏆' : pct >= 60 ? '📚' : '💪';
+  document.getElementById('resultsSub').textContent = pct >= 80
+    ? 'Excellent! You have mastered CSS fundamentals.'
+    : pct >= 60 ? 'Good effort! Review the topics you missed.'
+    : 'Keep practising — review the notes and try again!';
+
+  document.getElementById('resultsPanel').classList.add('show');
+  document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ─────────────────────────────────────────────
+//  RESET
+// ─────────────────────────────────────────────
+function resetAll() {
+  state = {};
+  // Remove styles from all options
+  document.querySelectorAll('.q-option').forEach(o => {
+    o.className = 'q-option';
+    o.style = '';
+  });
+  document.querySelectorAll('.q-card').forEach(c => {
+    c.classList.remove('answered-correct','answered-wrong');
+  });
+  document.querySelectorAll('.q-feedback').forEach(f => {
+    f.className = 'q-feedback';
+    f.innerHTML = '<span class="fb-icon"></span><span class="fb-text"></span>';
+  });
+  document.getElementById('resultsPanel').classList.remove('show');
+  updateProgress();
+  showAll();
+}
+
+// ─────────────────────────────────────────────
+//  FILTER
+// ─────────────────────────────────────────────
+function showAll() {
+  document.querySelectorAll('.q-card, .section-header, [data-topic-container]').forEach(el => el.classList.remove('hidden'));
+  document.getElementById('searchBox').value = '';
+}
+
+function showUnanswered() {
+  document.querySelectorAll('.q-card').forEach(card => {
+    const id = card.id.replace('card-','');
+    card.classList.toggle('hidden', !!state[id]);
+  });
+  toggleSectionVisibility();
+}
+
+function showWrong() {
+  document.querySelectorAll('.q-card').forEach(card => {
+    const id = card.id.replace('card-','');
+    const s = state[id];
+    const isWrong = s && s.chosen !== s.correct;
+    card.classList.toggle('hidden', !isWrong);
+  });
+  toggleSectionVisibility();
+}
+
+function filterQuestions() {
+  const query = document.getElementById('searchBox').value.toLowerCase();
+  document.querySelectorAll('.q-card').forEach(card => {
+    const text = card.querySelector('.q-text').textContent.toLowerCase();
+    card.classList.toggle('hidden', query.length > 1 && !text.includes(query));
+  });
+  toggleSectionVisibility();
+}
+
+function filterByTopic(topicId) {
+  document.querySelectorAll('.topic-chip').forEach(c => c.classList.remove('active'));
+  document.getElementById('chip-' + topicId)?.classList.add('active');
+  if (!document.getElementById('chip-' + topicId)) {
+    document.getElementById('chip-all')?.classList.add('active');
+  }
+
+  document.querySelectorAll('[data-topic-container], .section-header').forEach(el => {
+    if (topicId === 'all') {
+      el.classList.remove('hidden');
+    } else {
+      const id = el.dataset.topicContainer || el.dataset.topicId;
+      el.classList.toggle('hidden', id !== topicId);
+    }
+  });
+  document.querySelectorAll('.q-card').forEach(card => {
+    if (topicId === 'all') { card.classList.remove('hidden'); return; }
+    const id = card.id.replace('card-','');
+    card.classList.toggle('hidden', !id.startsWith(topicId));
+  });
+}
+
+function toggleSectionVisibility() {
+  document.querySelectorAll('[data-topic-container]').forEach(container => {
+    const visible = [...container.querySelectorAll('.q-card')].some(c => !c.classList.contains('hidden'));
+    const tid = container.dataset.topicContainer;
+    const sh = document.querySelector(`.section-header[data-topic-id="${tid}"]`);
+    container.classList.toggle('hidden', !visible);
+    if (sh) sh.classList.toggle('hidden', !visible);
+  });
+}
+
+// ─────────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────────
+buildUI();
+</script>
+</body>
+</html>
